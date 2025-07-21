@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FeatureCard from '../components/FeatureCard.jsx';
 import AboutImage from '../assets/about-pic.png';
+import { useInView } from 'react-intersection-observer'; // Import useInView
 
 const LandingPage = () => {
   const features = [
@@ -21,15 +22,54 @@ const LandingPage = () => {
       delay: 200
     },
     {
-      title: "Quick & easy",
+      title: "Quick & easy recipes",
       description: "Lorem ipsum dolor sit amet consectetur adipiscing elit vel, nunc tellus ornare viverra aptent augue.",
       delay: 300
     }
   ];
 
-  return (
-    
+  // intersection observer refs for animations per section
+  const [heroRef, heroInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,    // 10% visible to trigger
+  });
 
+  const [howItWorksRef, howItWorksInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const [whyCozinaRef, whyCozinaInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const [aboutImageRef, aboutImageInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2, 
+  });
+
+  const [aboutRef, aboutInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const [aboutTextRef, aboutTextInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2, 
+  });
+
+  const [contactBtnRef, contactBtnInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const [ctaRef, ctaInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  return (
     <div className="relative min-h-screen bg-cozina-cream">
 
         <header className="sticky top-0 z-50 bg-cozina-cream shadow-sm">
@@ -49,10 +89,14 @@ const LandingPage = () => {
             <hr className="border-gray-700 my-0" />
         </header>
 
-      <main className="relative z-10 flex flex-col items-center justify-center px-8 py-16">
+      <main className="relative z-10 flex flex-col items-center px-8 py-16">
 
-        <div className="text-center mb-16">
-
+        {/* hero section (transition) */}
+        <div 
+          ref={heroRef} 
+          className={`text-center mb-16 transition-all duration-1000 ease-out 
+                      ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} // Apply transition classes
+        >
           <h1 className="font-cozina-heading md:text-5xl text-cozina-black mb-[20px] mt-[100px]">
             Comfort food, simplified
           </h1>
@@ -71,8 +115,11 @@ const LandingPage = () => {
           </Link>
         </div>
 
-        {/* Features */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl w-full">
+        {/* Features  */}
+        <div 
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl w-full transition-opacity duration-700 ease-out 
+                      ${heroInView ? 'opacity-100' : 'opacity-0'}`} // Fades in with the hero section
+        >
           {features.map((feature, index) => (
             <FeatureCard
               key={index}
@@ -83,8 +130,12 @@ const LandingPage = () => {
           ))}
         </div>
 
-        
-        <section className="mt-[210px] text-center px-4 max-w-6xl mx-auto text-cozina-maroon">
+        {/* How it works  */}
+        <section 
+          ref={howItWorksRef} 
+          className={`mt-[210px] text-center px-4 max-w-6xl mx-auto text-cozina-maroon transition-all duration-1000 ease-out 
+                      ${howItWorksInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} // Apply transition classes
+        >
           <h2 className="font-cozina-heading text-[40px] mb-8 ">How it works</h2>
           <div className="grid md:grid-cols-3 gap-12 font-cozina-body text-lg">
             <div>
@@ -103,8 +154,12 @@ const LandingPage = () => {
           </div>
         </section>
 
-
-        <section className="flex mt-[210px] text-center px-4 max-w-4xl mx-auto ">
+        {/* Why Cozina Section */}
+        <section 
+          ref={whyCozinaRef} // Attach ref
+          className={`flex mt-[210px] text-center px-4 max-w-4xl mx-auto transition-all duration-1000 ease-out 
+                      ${whyCozinaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} // Apply transition classes
+        >
           <div className="w-[1100px] h-[600px] bg-cozina-darkgreen mx-auto mb-4 p-[75px] rounded-[50px] flex flex-col text-center">
             <h2 className="font-cozina-heading text-3xl mb-14 text-cozina-neongreen">Why Cozina?</h2>
           <p className="font-cozina-body text-lg text-cozina-neongreen">
@@ -119,27 +174,39 @@ const LandingPage = () => {
           <p className="font-cozina-body text-lg text-cozina-neongreen mt-4">
             At its heart, Cozina is made by students, for students — and anyone who’s ever stared into an empty fridge thinking, “What now?”
           </p>
-
           </div>
         </section>
 
         <div className="mt-20 w-20 h-2 bg-cozina-orange mx-auto"/>
 
-        {/* About Me */}
-
-        <section className="mt-16 px-4 max-w-5xl mx-auto text-center">
+        {/* About Me Section */}
+        <section 
+          ref={aboutRef}
+          className={`mt-16 px-4 max-w-5xl mx-auto text-center transition-all duration-1000 ease-out 
+                      ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
           <h2 className="font-cozina-heading text-3xl mb-12 text-cozina-orange">Meet the developer</h2>
 
-          <div className='flex flex-row'>
+        </section>
+
+          <div className='flex flex-col md:flex-row items-center md:items-start'>
             <img
+              ref={aboutImageRef} 
               src={AboutImage}
               alt="Developer - Atenas"
-              className="w-[400px] h-full object-cover"
+              className={`w-full max-w-sm md:w-[400px] h-full object-cover mb-8 md:mb-0
+                        transition-all duration-1000 ease-out md:mr-4
+                        ${aboutImageInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`} 
             />
-            <div className="ml-16 flex flex-col justify-center font-cozina-body text-xl text-cozina-maroon">
-              
+          
+            <div 
+              ref={aboutTextRef} 
+              className={`md:ml-16 flex flex-col justify-center w-[550px] font-cozina-body text-xl text-cozina-maroon text-center 
+                         transition-all duration-1000 ease-out
+                         ${aboutTextInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}
+            >
               <p>
-                Hi! I'm Atenas — a Honduran CS and Technology Engineering Student in Monterrey, Mexico. Besides programming, UX/UI design and tech, one of my biggest passions is cooking and sharing my recipes with others.
+                Hi! I'm Atenas — a Honduran CS and Technology Engineering Student in Monterrey, Mexico. Besides programming, design and tech, one of my biggest passions is cooking and sharing my recipes with others.
                 Food has always been a way for me to connect with friends and family, especially as a student living away from home.
               </p>
               <p className="mt-8">
@@ -149,18 +216,27 @@ const LandingPage = () => {
                 Whether you're trying to use up pantry leftovers, learn how to cook for yourself, or just find new recipes to try, I hope Cozina helps you feel a little more at home.
               </p>
             </div>
+
           </div>
           
-          <button className="mt-14 mb-32 font-cozina-body px-16 py-3 bg-cozina-lightpink text-cozina-maroon text-lg rounded-full hover:bg-white/40 transition-all duration-300">
+          <button ref={contactBtnRef} 
+          className={`mt-14 mb-32 font-cozina-body px-16 py-3 bg-cozina-lightpink text-cozina-maroon text-lg rounded-full hover:bg-white/40 transition-all duration-300 
+                    ${contactBtnInView ? 'opacity-100 translate-x-0 ' : 'opacity-0 translate-x-20'}`}>
               Contact Me!
           </button>
+        
 
-        </section>
-
-        <h2 className="flex font-cozina-heading text-3xl mb-12 text-cozina-maroon w-[900px] text-center mx-auto">Join Cozina and start your journey to mastering cooking, one recipe at a time!</h2>
-        <Link to="/" className="font-cozina-heading text-2xl text-cozina-darkpink mb-48 hover:underline">
-             Sign up here to access all features!
-        </Link>
+        {/* Call to Action  */}
+        <div 
+            ref={ctaRef}
+            className={`flex flex-col items-center transition-all duration-1000 ease-out 
+                        ${ctaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
+            <h2 className="font-cozina-heading text-3xl mb-12 text-cozina-maroon w-[900px] text-center mx-auto">Join Cozina and start your journey to mastering cooking, one recipe at a time!</h2>
+            <Link to="/" className="font-cozina-heading text-2xl text-cozina-darkpink mb-48 hover:underline">
+                 Sign up here to access all features!
+            </Link>
+        </div>
 
       </main>
     </div>
