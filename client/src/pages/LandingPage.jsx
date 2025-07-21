@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FeatureCard from '../components/FeatureCard.jsx';
+import AboutImage from '../assets/about-pic.png';
 
 const LandingPage = () => {
   const features = [
@@ -33,7 +34,7 @@ const LandingPage = () => {
 
         <header className="sticky top-0 z-50 bg-cozina-cream shadow-sm">
             <div className="relative flex justify-between items-center px-16 py-10"> 
-                <Link to="/" className="font-cozina-heading text-4xl text-gray-900">
+                <Link to="/" className="font-cozina-heading text-4xl text-cozina-maroon">
                     Cozina
                 </Link>
                 <div className="flex gap-4">
@@ -82,24 +83,84 @@ const LandingPage = () => {
           ))}
         </div>
 
-        <section className="mt-24 text-center px-4 max-w-5xl mx-auto">
-        <h2 className="font-cozina-heading text-3xl mb-8 text-cozina-black">How it works</h2>
-        <div className="grid md:grid-cols-3 gap-8 font-cozina-body text-lg text-gray-800">
+        
+        <section className="mt-[210px] text-center px-4 max-w-6xl mx-auto text-cozina-maroon">
+          <h2 className="font-cozina-heading text-[40px] mb-8 ">How it works</h2>
+          <div className="grid md:grid-cols-3 gap-12 font-cozina-body text-lg">
             <div>
-            <h3 className="text-xl font-semibold mb-2">1. Tell us what you have</h3>
-            <p>Add ingredients, dietary needs, or a budget range.</p>
-            </div>
+              <h3 className="text-2xl font-cozina-subheading font-semibold mb-2">1. Tell us what you have</h3>
+              <p className="font-cozina-body">Add ingredients, dietary needs, or a budget range — we’ll take it from there.</p>
+            </div>  
             <div>
-            <h3 className="text-xl font-semibold mb-2">2. Get smart suggestions</h3>
-            <p>We suggest recipes that match your input — no waste, no stress.</p>
+              <h3 className="text-2xl font-cozina-subheading font-semibold mb-2">2. Get curated recipes</h3>
+              <p className="font-cozina-body">Get suggestions based on your pantry. No repeats, no waste. Just smart, personalized picks.</p>
             </div>
+            
             <div>
-            <h3 className="text-xl font-semibold mb-2">3. Start cooking</h3>
-            <p>Quick, student-friendly recipes, curated just for you.</p>
+              <h3 className="text-2xl font-cozina-subheading font-semibold mb-2">3. Cook & connect</h3>
+              <p className="font-cozina-body">Follow steps, leave a comment, share tips, or discover hacks from other students like you.</p>
             </div>
-        </div>
+          </div>
         </section>
 
+
+        <section className="flex mt-[210px] text-center px-4 max-w-4xl mx-auto ">
+          <div className="w-[1100px] h-[600px] bg-cozina-darkgreen mx-auto mb-4 p-[75px] rounded-[50px] flex flex-col text-center">
+            <h2 className="font-cozina-heading text-3xl mb-14 text-cozina-neongreen">Why Cozina?</h2>
+          <p className="font-cozina-body text-lg text-cozina-neongreen">
+            Cozina was born from a simple problem: how do you make real food with limited time, money, and ingredients — and still enjoy it? 
+            As students juggling classes, late nights, and tiny kitchens, we wanted something more helpful than just a recipe site. 
+            We needed something that *understood* what was in our fridge, how much we could spend, and how tired we were.
+          </p>
+          <p className="font-cozina-body text-lg text-cozina-neongreen mt-4">
+            That’s why we built Cozina — to make everyday cooking more accessible, less wasteful, and a little more joyful. 
+            It filters recipes by budget, ingredients, and dietary needs, gives pantry-aware suggestions, and even lets users share tips and comment on what works best for them.
+          </p>
+          <p className="font-cozina-body text-lg text-cozina-neongreen mt-4">
+            At its heart, Cozina is made by students, for students — and anyone who’s ever stared into an empty fridge thinking, “What now?”
+          </p>
+
+          </div>
+        </section>
+
+        <div className="mt-20 w-20 h-2 bg-cozina-orange mx-auto"/>
+
+        {/* About Me */}
+
+        <section className="mt-16 px-4 max-w-5xl mx-auto text-center">
+          <h2 className="font-cozina-heading text-3xl mb-12 text-cozina-orange">Meet the developer</h2>
+
+          <div className='flex flex-row'>
+            <img
+              src={AboutImage}
+              alt="Developer - Atenas"
+              className="w-[400px] h-full object-cover"
+            />
+            <div className="ml-16 flex flex-col justify-center font-cozina-body text-xl text-cozina-maroon">
+              
+              <p>
+                Hi! I'm Atenas — a Honduran CS and Technology Engineering Student in Monterrey, Mexico. Besides programming, UX/UI design and tech, one of my biggest passions is cooking and sharing my recipes with others.
+                Food has always been a way for me to connect with friends and family, especially as a student living away from home.
+              </p>
+              <p className="mt-8">
+                I built Cozina to make cooking easier, smarter, and a little more joyful for people like me: students with limited time and ingredients.
+              </p>
+              <p className="mt-8">
+                Whether you're trying to use up pantry leftovers, learn how to cook for yourself, or just find new recipes to try, I hope Cozina helps you feel a little more at home.
+              </p>
+            </div>
+          </div>
+          
+          <button className="mt-14 mb-32 font-cozina-body px-16 py-3 bg-cozina-lightpink text-cozina-maroon text-lg rounded-full hover:bg-white/40 transition-all duration-300">
+              Contact Me!
+          </button>
+
+        </section>
+
+        <h2 className="flex font-cozina-heading text-3xl mb-12 text-cozina-maroon w-[900px] text-center mx-auto">Join Cozina and start your journey to mastering cooking, one recipe at a time!</h2>
+        <Link to="/" className="font-cozina-heading text-2xl text-cozina-darkpink mb-48 hover:underline">
+             Sign up here to access all features!
+        </Link>
 
       </main>
     </div>

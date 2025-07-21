@@ -9,8 +9,11 @@ module.exports = {
         'cozina-maroon': '#4F060B',  
         'cozina-lightpink': '#FEB3D1',
         'cozina-darkpink': '#80013B',
-        'cozina-cream': '#F8E1BF',
+        'cozina-cream': '#FAEDD2',
         'cozina-black': '#000000',
+        'cozina-darkgreen': '#03573F',
+        'cozina-neongreen': '#CDF544',
+        'cozina-orange': '#FF7803',
       },
       fontFamily: {
         'cozina-heading': ['Bowlby One', 'sans-serif'],
