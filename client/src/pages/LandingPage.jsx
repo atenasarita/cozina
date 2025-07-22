@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer'; 
+import { motion, useScroll, useTransform } from 'framer-motion';
+
 import FeatureCard from '../components/FeatureCard.jsx';
 import AboutImage from '../assets/about-pic.png';
-import { useInView } from 'react-intersection-observer'; // Import useInView
+import Cookies from '../assets/cookies.png';
+import Onions from '../assets/onions.png';
+import Sandwich from '../assets/sandwich.png';
+import Fries from '../assets/fries.png';
+
 
 const LandingPage = () => {
   const features = [
@@ -69,6 +76,21 @@ const LandingPage = () => {
     threshold: 0.1,
   });
 
+
+  const { scrollYProgress } = useScroll();
+
+  const CookiesY = useTransform(
+      scrollYProgress,
+      [0, 1], 
+      ['0vh', '150vh'] 
+  );
+
+  const OnionY = useTransform(
+      scrollYProgress,
+      [0, 1], 
+      ['0vh', '120vh'] 
+  );
+
   return (
     <div className="relative min-h-screen bg-cozina-cream">
 
@@ -89,14 +111,46 @@ const LandingPage = () => {
             <hr className="border-gray-700 my-0" />
         </header>
 
+      
+
       <main className="relative z-10 flex flex-col items-center px-8 py-16">
+
+        <motion.img
+          src={Cookies}
+          style={{ y: CookiesY }}
+          alt="Cookies"
+          className="absolute w-[275px] left-[-90px] z-0 rotate-45"
+        />
+
+        <motion.img
+          src={Onions}
+          style={{ y: OnionY }}
+          alt="Onions"
+          className="absolute top-[400px] w-[150px] left-[-30px] z-0 rotate-45"
+        />
+
+        <motion.img
+          src={Sandwich}
+          style={{ y: OnionY }}
+          alt="Sandwich"
+          className="absolute top-[75px] w-[210px] right-[-60px] z-0 rotate-45"
+        />
+
+        <motion.img
+          src={Fries}
+          style={{ y: Cookies }}
+          alt="Sandwich"
+          className="absolute top-[500px] w-[150px] right-[-30px] z-0 rotate-45"
+        />
+
 
         {/* hero section (transition) */}
         <div 
           ref={heroRef} 
-          className={`text-center mb-16 transition-all duration-1000 ease-out 
+          className={`text-center mb-16 transition-all duration-1000 ease-out w-full
                       ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} // Apply transition classes
         >
+        
           <h1 className="font-cozina-heading md:text-5xl text-cozina-black mb-[20px] mt-[100px]">
             Comfort food, simplified
           </h1>
