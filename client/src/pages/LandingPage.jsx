@@ -9,6 +9,15 @@ import Cookies from '../assets/cookies.png';
 import Onions from '../assets/onions.png';
 import Sandwich from '../assets/sandwich.png';
 import Fries from '../assets/fries.png';
+import Carrots from '../assets/carrots.png';
+import Waffles from '../assets/waffles.png';
+import Tomatoes from '../assets/tomatoes.png';
+import Pizza from '../assets/pizza.png';
+import Shortcake from '../assets/shortcake.png';
+import GarlicBread from '../assets/garlic-bread.png';
+import LemonPie from '../assets/lemon-pie.png';
+import Jam from '../assets/jam.png';
+
 
 
 const LandingPage = () => {
@@ -79,16 +88,22 @@ const LandingPage = () => {
 
   const { scrollYProgress } = useScroll();
 
-  const CookiesY = useTransform(
+  const ScrollingRate1 = useTransform(
       scrollYProgress,
       [0, 1], 
       ['0vh', '150vh'] 
   );
 
-  const OnionY = useTransform(
+  const ScrollingRate2 = useTransform(
       scrollYProgress,
       [0, 1], 
-      ['0vh', '120vh'] 
+      ['0vh', '110vh'] 
+  );
+
+  const ScrollingRate3 = useTransform(
+      scrollYProgress,
+      [0, 1], 
+      ['0vh', '80vh'] 
   );
 
   return (
@@ -117,34 +132,89 @@ const LandingPage = () => {
 
         <motion.img
           src={Cookies}
-          style={{ y: CookiesY }}
+          style={{ y: ScrollingRate1 }}
           alt="Cookies"
-          className="absolute w-[275px] left-[-90px] z-0 rotate-45"
+          className="absolute w-[225px] left-[50px] z-0"
         />
 
         <motion.img
           src={Onions}
-          style={{ y: OnionY }}
+          style={{ y: ScrollingRate2 }}
           alt="Onions"
-          className="absolute top-[400px] w-[150px] left-[-30px] z-0 rotate-45"
+          className="absolute top-[420px] w-[140px] left-[-10px] z-0 rotate-45"
         />
 
         <motion.img
           src={Sandwich}
-          style={{ y: OnionY }}
+          style={{ y: ScrollingRate2 }}
           alt="Sandwich"
-          className="absolute top-[75px] w-[210px] right-[-60px] z-0 rotate-45"
+          className="absolute top-[25px] w-[180px] right-[-40px] z-0 rotate-45"
         />
 
         <motion.img
           src={Fries}
-          style={{ y: Cookies }}
-          alt="Sandwich"
-          className="absolute top-[500px] w-[150px] right-[-30px] z-0 rotate-45"
+          style={{ y: ScrollingRate1 }}
+          alt="Fries"
+          className="absolute top-[370px] w-[150px] right-[160px] z-0"
         />
 
+        <motion.img
+          src={Carrots}
+          style={{ y: ScrollingRate2 }}
+          alt="Carrots"
+          className="absolute top-[870px] w-[220px] left-[-30px] z-0"
+        />
 
-        {/* hero section (transition) */}
+        <motion.img
+          src={Waffles}
+          style={{ y: ScrollingRate3 }}
+          alt="Waffles"
+          className="absolute top-[600px] w-[270px] left-[300px] z-0"
+        />
+
+        <motion.img
+          src={Tomatoes}
+          style={{ y: ScrollingRate3 }}
+          alt="Tomatoes"
+          className="absolute top-[1100px] w-[200px] right-[100px] z-0"
+        />
+
+        <motion.img
+          src={Pizza}
+          style={{ y: ScrollingRate3 }}
+          alt="Pizza"
+          className="absolute top-[1450px] w-[220px] left-[100px] z-0"
+        />
+
+        <motion.img
+          src={Shortcake}
+          style={{ y: ScrollingRate2 }}
+          alt="Shortcake"
+          className="absolute top-[1350px] w-[220px] right-[200px] z-0"
+        />
+
+        <motion.img
+          src={GarlicBread}
+          style={{ y: ScrollingRate3 }}
+          alt="Garlic Bread"
+          className="absolute top-[1900px] w-[220px] left-[-30px] z-0"
+        />
+
+        <motion.img
+          src={LemonPie}
+          style={{ y: ScrollingRate1 }}
+          alt="Lemon Pie"
+          className="absolute top-[1600px] w-[220px] right-[-10px] z-0"
+        />
+
+        <motion.img
+          src={Jam}
+          style={{ y: ScrollingRate2 }}
+          alt="Jam"
+          className="absolute top-[2130px] w-[200px] left-[100px] z-0"
+        />
+
+        {/* hero section (transition) */} 
         <div 
           ref={heroRef} 
           className={`text-center mb-16 transition-all duration-1000 ease-out w-full
