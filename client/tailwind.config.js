@@ -14,6 +14,7 @@ module.exports = {
         'cozina-darkgreen': '#03573F',
         'cozina-neongreen': '#CDF544',
         'cozina-orange': '#FF7803',
+        'cozina-yellow': '#FFD130',
       },
       fontFamily: {
         'cozina-heading': ['Bowlby One', 'sans-serif'],
